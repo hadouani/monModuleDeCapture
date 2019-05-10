@@ -1,5 +1,5 @@
 
- const vlib = {
+export const vlib = {
     FPS: 30,
     initialize() {
 
@@ -654,5 +654,5 @@
         }
     }
 }
- export { vlib }
+
 
