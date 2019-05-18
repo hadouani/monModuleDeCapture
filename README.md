@@ -33,7 +33,7 @@ After pressing the "take" button, we display a countdown of 3 seconds after whic
 
 ![3](https://user-images.githubusercontent.com/45512316/57560004-f035c600-7373-11e9-9596-e816a0e20de2.PNG)
 
-After capture the photo user can save or go back to take a new photo
+After capture the photo user can save or go back to take a new photo or r=save her photo by clickin on "save"
 
 ![4](https://user-images.githubusercontent.com/45512316/57560014-fd52b500-7373-11e9-874a-406b97815efe.PNG)
 
