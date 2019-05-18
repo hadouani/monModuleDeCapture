@@ -1,28 +1,29 @@
  **Installation :**
  
-npm install --save react-html5-camera-photo
+ npm i capturemoduleo
 
 **Usage :**
 
-to use this model  you should  create a tag "div" with id "camera"  like this
-
+to use this model  you should  create a tag "div" :
 
 <div class="top-container" id="camera">
 </div>
 
-this module it is divided into 3 parts
+and follow the next instruction :
+
+so this module it is divided in 3 parts
 
 **the first part include:**
 
 
 An interface for the actions of the capture and recording of the encoded image
 
- **The use this part   : vlib.initialize()**
+ **The use this part call intialize("id_div") function with id of the div as a parmter of the function ,for  example : vlib.initialize("camera")**
 
 
 ![1](https://user-images.githubusercontent.com/45512316/57559986-dac09c00-7373-11e9-8137-35f87fe792e5.PNG)
 
-Start camera after pressing the "turn on camera" button 
+after pressing the "turn on camera" button camera Start  
 
 
 ![2](https://user-images.githubusercontent.com/45512316/57559995-e8762180-7373-11e9-8c33-e528bcb9832c.PNG)
@@ -43,15 +44,15 @@ If the user click on "save" button, he can download her photo after clicking on 
 
 Interfaces and components to adjust image quality and adding effects to the image (contrast, brightness, hue, etc ...)
 
-**The use this part   : vlib.adjust()**
+**The use this part call adjust() function, for example : vlib.adjust()**
 
 ![2](https://user-images.githubusercontent.com/45512316/57560062-207d6480-7374-11e9-893d-4c6988c6ca86.PNG)
 
-After clicking on Edit the user can click on “Edit” button to Edit her photo or click on “cancel” button to go back and cancel the edit
+ the user can click on “Edit” button to Edit her photo or also he can  click on “cancel” button to go back and cancel the edit
 
 ![4](https://user-images.githubusercontent.com/45512316/57560084-2ecb8080-7374-11e9-833f-ca1c98fb0310.PNG)
 
-After clicking on “Adjust”, button we display some ranges to user can adjust her photo (Brightness, Contrast, Grayscale, Opacity, Saturate)
+After clicking on “Adjust”, button we display some ranges to user can adjust her photo by (Brightness, Contrast, Grayscale, Opacity, Saturate)
 
 ![5](https://user-images.githubusercontent.com/45512316/57560090-33903480-7374-11e9-8c2b-2cc33e42edbd.PNG)
 
@@ -59,7 +60,7 @@ After make the setting of the photo, the user can cancel or save the adjust Afte
 
 ![6](https://user-images.githubusercontent.com/45512316/57560101-3be86f80-7374-11e9-8925-4123bdd35250.PNG)
 
-If the user click on “Save” Button, the user can download her photo
+the user can download her photo If he click on “Save” Button, 
 
 ![7](https://user-images.githubusercontent.com/45512316/57560107-4571d780-7374-11e9-974b-bb744e21225d.PNG)
 
@@ -68,7 +69,7 @@ If the user click on “Save” Button, the user can download her photo
 Interfaces allow users to crop and rotate the image. For this, the interface has a rectangle with wrists
 To guide the user in his actions as well as recording the crop image
 
- **The use this part   : vlib.crop()**
+ **The use this part call crop() function, for example  : vlib.crop()**
  
  After clicking on “Edit” button, we display this interface to given user choice to adjusting or cropping her photo 
 
