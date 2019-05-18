@@ -1,6 +1,6 @@
  **Installation :**
  
- npm i capturemoduleo
+ npm i capturemodule
 
 **Usage :**
 
