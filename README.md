@@ -7,6 +7,7 @@
 to use this model  you should  create a tag "div" :
 
 <div class="top-container" id="camera">
+ 
 </div>
 
 and follow the next instruction :
