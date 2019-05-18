@@ -18,7 +18,7 @@ so this module it is divided in 3 parts
 
 An interface for the actions of the capture and recording of the encoded image
 
- **The use this part call intialize("id_div") function with id of the div as a parmter of the function ,for  example : vlib.initialize("camera")**
+ **The use this part call intialize("id_div") function with id of the div already created as a parmter of the function ,for  example : vlib.initialize("camera")**
 
 
 ![1](https://user-images.githubusercontent.com/45512316/57559986-dac09c00-7373-11e9-8137-35f87fe792e5.PNG)
