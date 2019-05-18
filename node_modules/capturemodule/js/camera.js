@@ -1,25 +1,23 @@
 
-<<<<<<< HEAD
 export const vlib = {
-=======
- const vlib = {
->>>>>>> third commit
     FPS: 30,
-    initialize() {
+    initialize(id) {
 
-        document.getElementById('camera').innerHTML += "<canvas id=\"c1\"></canvas> " +
+        document.getElementById(id).innerHTML += "<canvas id=\"c1\"></canvas> " +
+            "    <video id=\"v1\" controls width=\"600\" height=\"400\"> </video>\n" +
+            "                <h2 id=\"h\" >check the camera of your device</h2>\n" +
             "  <button id=\"start\" class=\"btnn\">Turn on Camera</button>\n" +
             "  <button id=\"capture\" class=\"btnn\">Take  <i class=\"fas fa-camera-retro\"></i></button>\n" +
             "<button id=\"save\" class=\"btnn\">Save <i class=\"fas fa-save\"></i></button>\n" +
             "                <button id=\"reCapture\" class=\"btnn\">Remove <i class=\"fas fa-window-close\"></i></button>\n" +
-            "                <button id=\"download\" class=\"btnn\">Download <i class=\"fas fa-download\"></i></button>\n" ;
+            "                <button id=\"download\" class=\"btnn\">Download <i class=\"fas fa-download\"></i></button>\n";
 
-        document.getElementById('camera').innerHTML += "   " +
+        document.getElementById(id).innerHTML += "   " +
             "<video id=\"v2\" controls width=\"600\" height=\"400\"> </video>\n" +
-            "    <video id=\"v1\" controls width=\"600\" height=\"400\"> </video>\n" +
             "    <img src=\"\" id=\"image\">";
 
-        this.initialize1()
+        this.idd=id
+       this.initialize1()
     },
     initialize1(){
         this.canvas = document.querySelector('#c1')
@@ -32,9 +30,11 @@ export const vlib = {
         this.video2 = document.querySelector('#v2');
         this.video1 = document.querySelector('#v1');
         this.image = document.querySelector('#image');
+        this.h = document.querySelector('#h');
         this.ad=false;
 
         this.video2.style.display = "none"
+        this.h.style.display = "none"
         this.video1.style.display = "none"
         this.canvas.style.display = "none"
         this.captur.style.display = "none"
@@ -45,14 +45,8 @@ export const vlib = {
 
         this.start.addEventListener("click", _ => {
             this.startCamera();
-            this.w = this.canvas.width = this.video2.width
-            this.h = this.canvas.height = this.video2.height
-            this.canvas.style.display = "block"
-            this.start.style.display = "none"
-            this.captur.style.display = "block"
-            this.video2.play();
-            this.etat;
-            this.copy()
+
+
         }, true)
         this.captur.addEventListener("click", _ => {
             this.etat = false;
@@ -82,9 +76,21 @@ export const vlib = {
         try {
             stream = await navigator.mediaDevices.getUserMedia({video: true})
             this.video2.srcObject = stream
+            this.w = this.canvas.width = this.video2.width
+            this.h = this.canvas.height = this.video2.height
+
+            this.canvas.style.display = "block"
+            this.start.style.display = "none"
+            this.captur.style.display = "block"
+            this.video2.play();
+            this.etat;
+            this.copy()
+
         } catch (error) {
+           // this.start.style.display = "none"
+            this.h.style.display = "block"
+            this.video1.src = 'video/1.mp4';
             this.video1.style.display = "block"
-            this.video1.src = '1.mp4';
             console.log("ima in catch")
             this.video1.loop = true;
             this.video1.play();
@@ -111,6 +117,8 @@ export const vlib = {
         setTimeout(_ => this.copy2(), 1000 / this.FPS)
     },
     downloadImage() {
+        const tele = confirm("Telecharger ?");
+        if(tele){
         const imgsrc = this.canvas.toDataURL();
         var element = document.createElement('a');
         element.setAttribute('href', imgsrc);
@@ -119,6 +127,7 @@ export const vlib = {
         document.body.appendChild(element);
         element.click();
         document.body.removeChild(element);
+        }
     },
     async CompleteCapture() {
         this.countdown(3);
@@ -138,14 +147,14 @@ export const vlib = {
         return new Promise(resolve => setTimeout(resolve, milliseconds))
     },
     adjust(){
-        document.getElementById('camera').innerHTML += " " +
+        document.getElementById(this.idd).innerHTML += " " +
             "                <button id=\"edit\" class=\"btnn\">Edit <i class=\"fas fa-edit\"></i></button>\n" +
             "                <button id=\"filtre\" class=\"btnn\">Adjust <i class=\"fas fa-th\"></i></button>\n" +
             "                <button id=\"saveFiltre\" class=\"btnn\">Save  <i class=\"fas fa-save\"></i></button>\n" +
             "                <button id=\"saveEdit\" class=\"btnn\">Save  <i class=\"fas fa-save\"></i></button>\n" +
             "                <button id=\"cancel2\" class=\"btnn\">Cancel  <i class=\"fas fa-window-close\"></i></button>\n" +
             "                <button id=\"cancel3\" class=\"btnn\">Cancel  <i class=\"fas fa-window-close\"></i></button>\n";
-        document.getElementById('camera').innerHTML += "  " +
+        document.getElementById(this.idd).innerHTML += "  " +
             " <div class=\"slidecontainer\">\n" +
             "            <label>Brightness</label>\n" +
             "            <input id=\"fbrightness\" type=\"range\" min=\"0\" max=\"200\" step=\"1\" value=\"100\" class=\"slider\"/>\n" +
@@ -197,8 +206,10 @@ export const vlib = {
                  break;
              }
          }
-         this.ctx.filter = "brightness(" + val1 + "%) contrast(" + val2 + "%) grayscale(" + val3 + "%) opacity(" + val4 + "%) saturate(" + val5 + "%)";
+
          this.ctx.drawImage(this.canvas, 0, 0, this.w, this.h)
+         this.ctx.filter = "brightness("+val1+"%) contrast("+val2+"%) grayscale("+val3+"%) opacity("+val4+"%) saturate("+val5+"%)";
+         this.ctx.drawImage(this.video2, 0, 0, this.w, this.h)
      },
      adjust2(){
          this.edit = document.getElementById('edit');
@@ -354,7 +365,7 @@ export const vlib = {
      },
     crop() {
 
-        document.getElementById('camera').innerHTML +="  \n"+
+        document.getElementById(this.idd).innerHTML +="  \n"+
             "                <button id=\"saveRecadre\" class=\"btnn\">Save <i class=\"fas fa-save\"></i></button>\n" +
             "                <button id=\"cadre\" class=\"btnn\">Crop <i class=\"fas fa-crop-alt\"></i></button>\n";
         this.initialize1();
@@ -411,7 +422,7 @@ export const vlib = {
                 drawrect: function () {
                     this.ctx2.clearRect(0, 0, this.wi, this.hi)
                     this.ctx2.drawImage(this.vidd, 0, 0, this.wi, this.hi)
-                    const imageData1 = this.ctx2.getImageData(0, 0, this.wi, this.hi)
+                   const imageData1 = this.ctx2.getImageData(0, 0, this.wi, this.hi)
                     const imageData2 = this.ctx2.getImageData(rects[0].x + 7, rects[0].y + 7, rects[4].x, rects[4].y)
                     const data1 = imageData1.data
                     const data2 = imageData2.data
@@ -462,12 +473,13 @@ export const vlib = {
 
                     this.ctx2.clearRect(0, 0, this.wi, this.hi)
                     this.ctx2.drawImage(this.vidd, 0, 0, this.wi, this.hi)
-                    const imageData1 = this.ctx2.getImageData(rects[0].x + 7, rects[0].y, rects[2].x - rects[0].x, rects[6].y - rects[0].y);
+                    const imageData1 = this.ctx2.getImageData(rects[0].x , rects[0].y, rects[2].x - rects[0].x, rects[6].y - rects[0].y);
                     this.ctx2.clearRect(0, 0, this.wi, this.hi)
 
                     const x = (rects[2].x - rects[0].x) / 2;
                     const y = (rects[6].y - rects[0].y) / 2
                     this.ctx2.putImageData(imageData1, (this.wi / 2) - x, (this.hi / 2) - y, 0, 0, 600, 400);
+                   // this.ctx2.putImageData(imageData1, 0,0,50,50,this.wi,this.hi);
                 }
             },
             {
@@ -658,9 +670,5 @@ export const vlib = {
         }
     }
 }
-<<<<<<< HEAD
 
-=======
- export { vlib }
->>>>>>> third commit
 
