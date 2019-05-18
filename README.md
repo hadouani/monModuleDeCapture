@@ -24,7 +24,7 @@ An interface for the actions of the capture and recording of the encoded image
 
 ![1](https://user-images.githubusercontent.com/45512316/57559986-dac09c00-7373-11e9-8137-35f87fe792e5.PNG)
 
-after pressing the "turn on camera" button camera Start  
+after pressing the "turn on camera" button, if  exist a problem on camera of the user we display a loop video else the camera Start  
 
 
 ![2](https://user-images.githubusercontent.com/45512316/57559995-e8762180-7373-11e9-8c33-e528bcb9832c.PNG)
